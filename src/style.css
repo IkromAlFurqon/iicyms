@@ -1,0 +1,344 @@
+/* ========== CSS RESET START ========== */
+* {
+    margin: 0;
+    padding: 0;
+}
+/* ========== CSS RESET END ========== */
+
+html {
+    scroll-behavior: smooth;
+}
+body {
+    min-width: 1920px;
+}
+
+/* ========== NAVIGATION BAR START ========== */
+header {
+    height: 70px;
+    width: 100%;
+    background-color: #FFDEB4;
+    position: sticky;
+    top: 0;
+}
+nav {
+    height: 70px;
+    width: 90%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: max-content auto max-content;
+    align-items: center;
+}
+.logo a {
+    display: block;
+    font-family: 'Shrikhand', cursive;
+    font-size: 35px;
+    text-decoration: none;
+    height: 70px;
+    line-height: 70px;
+    line-height: 70px;
+    padding: 0 15px;
+    color: #404040;
+}
+.nav-container {
+    height: 70px;
+    display: flex;
+    gap: 25px;
+}
+.nav-button-container {
+    height: 70px;
+    width: fit-content;
+}
+.nav-button-container a {
+    display: inline-block;
+    height: 65px;
+    line-height: 65px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    text-decoration: none;
+    color: #404040;
+}
+.underLine {
+    height: 5px;
+    width: 0;
+    background-color: #FFB4B4;
+    transition: 0.5s;
+}
+.nav-button-container:hover .underLine {
+    width: 100%;
+}
+/* ========== NAVIGATION BAR END ========== */
+
+
+/* ========== SECTION HOME START ========== */
+.home {
+    width: 90%;
+    height: 800px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+    /* background-color: aquamarine; */
+}
+.greeting-container h1 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 50px;
+    font-weight: 700;
+    color: #404040;
+}
+.greeting-container h1 .calCredit {
+    font-family: 'Shrikhand', cursive;
+    font-size: 50px;
+    font-weight: 400;
+}
+.greeting-container p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 22.5px;
+    font-weight: 500;
+    color: #404040;
+}
+.greeting-container p span {
+    font-family: 'Shrikhand', cursive;
+}
+.home-button-container {
+    height: 45px;
+    width: fit-content;
+    display: flex;
+    gap: 20px;
+}
+.home-button-container a {
+    height: 45px;
+    padding: 0 15px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    text-decoration: none;
+    line-height: 45px;
+    background-color: #FFDEB4;
+    border-radius: 10px;
+    transition: 0.5s;
+    color: #404040;
+}
+.home-button-container a:hover {
+    scale: 1.01;
+    box-shadow: 2px 2px 2.5px rgba(50, 50, 50, 0.25);
+}
+.img-container img {
+    width: 800px;
+}
+/* ========== SECTION HOME END ========== */
+
+
+
+/* ========== SECTION CALCULATOR START ========== */
+.calculator {
+    width: 90%;
+    height: 1000px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* background-color: aquamarine; */
+}
+.calculator h1 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 50px;
+    font-weight: 700;
+    color: #404040;
+}
+.calculator h1 span {
+    font-family: 'Shrikhand', cursive;
+    font-size: 50px;
+    font-weight: 400;
+}
+.calculator-container {
+    width: 100%;
+    height: 700px;
+    /* background-color: aquamarine; */
+    display: grid;
+    grid-template-rows: 50px auto 100px;
+    border-radius: 50px;
+    box-shadow: 0 0 10px rgba(50, 50, 50, 0.25);
+}
+.calculator-header {
+    width: 100%;
+    background-color: #FFDEB4;
+    border-radius: 50px 50px 0 0;
+}
+.calculator-body {
+    display: grid;
+    grid-template-columns: 1fr 5px 2fr;
+    gap: 20px;    
+}
+.calculator-input-container {
+    /* background-color: antiquewhite; */
+    display: grid;
+    grid-template-rows: 4fr 4fr 2fr;
+}
+.loan-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    /* background-color: salmon; */
+}
+#loan-nominal-title {
+    display: block;
+    font-family: 'Shrikhand', cursive;
+    font-size: 45px;
+    font-weight: 400;
+    line-height: auto;
+    color: #404040;
+}
+#loan {
+    display: block;
+    height: 70px;
+    width: 75%;
+    border: none;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 40px;
+    font-weight: 500;
+    border-bottom: 3px solid #FFB4B4;
+    outline: none;
+}
+.durationInterest-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* background-color: lime; */
+}
+.duration-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+#duration-title {
+    display: block;
+    font-family: 'Shrikhand', cursive;
+    font-size: 37.5px;
+    font-weight: 400;
+    line-height: auto;
+    color: #404040;
+}
+#duration {
+    display: block;
+    height: 70px;
+    width: 75%;
+    border: none;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 40px;
+    font-weight: 500;
+    border-bottom: 3px solid #FFB4B4;
+    outline: none;
+}
+.interest-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+}
+#interest-title {
+    display: block;
+    font-family: 'Shrikhand', cursive;
+    font-size: 37.5px;
+    font-weight: 400;
+    line-height: auto;
+    color: #404040;
+}
+#interestRate {
+    display: block;
+    height: 70px;
+    width: 75%;
+    border: none;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 40px;
+    font-weight: 500;
+    border-bottom: 3px solid #FFB4B4;
+    outline: none;
+}
+.submit-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: aqua; */
+}
+.submit-container button {
+    height: 50px;
+    width: 300px;
+    background-color: #FFDEB4;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Shrikhand', cursive;
+    font-size: 25px;
+    font-weight: 400;
+    color: #404040;
+}
+.submit-container button:active {
+    background-color: #f8bc6e;
+}
+.separator {
+    margin: auto 0;
+    height: 90%;
+    background-color: #FFDEB4;
+}
+.calculator-footer {
+    width: 100%;
+    background-color: #FFDEB4;
+    border-radius: 0 0 50px 50px;
+}
+.output-container {
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    margin: 27.5px 0;
+    gap: 20px;
+}
+.methods-container {
+    display: grid;
+    grid-template-rows: 50px auto;
+}
+.methods-container h1 {
+    font-family: 'Shrikhand', cursive;
+    font-size: 30px;
+    font-weight: 400;
+}
+.methods-output-container {
+    display: grid;
+    grid-template-columns: 4.5fr 4.5fr 1fr;
+    gap: 20px;
+    margin-right: 20px;
+    /* background-color: #FFB4B4; */
+}
+.interest-amount-container, .total-amount-container, .details-payment-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    border-bottom: 3px solid #FFB4B4;
+    border-right: 3px solid #FFB4B4;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0.75);
+}
+.interest-amount-container h2, .total-amount-container h2, .details-payment-container h2{
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+}
+.interest-amount-container h3, .total-amount-container h3 {
+    font-family: 'Roboto', sans-serif;
+    font-size: 30px;
+    font-weight: 700;
+}
+.details-payment-container img {
+    height: 50px;
+}
+.details-payment-container {
+    cursor: pointer;
+}
