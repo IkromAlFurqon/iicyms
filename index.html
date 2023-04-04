@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,400;1,500;1,700;1,900&family=Shrikhand&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Lalezar&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="src/style.css">
     <title>IICYMS 20213 PROJECTS</title>
 </head>
@@ -38,7 +38,7 @@
     <div id="home" style="height: 70px; width: 100%;"></div>
     <section class="home">
         <div class="greeting-container">
-            <h1><span class="typing"></span><span style="font-family: 'Shrikhand', cursive;font-size: 50px;font-weight: 400;"> </span></h1>
+            <h1><span class="typing"></span><span style="font-family: 'Black Ops One', cursive;font-size: 50px;font-weight: 400;"> </span></h1>
             <br><br>
             <p><span>CalCredit</span> is a Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae sunt quisquam illo quibusdam sed fuga porro quis nesciunt facilis quam neque eius, odio nihil quo distinctio aliquam maxime nobis rem! Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate incidunt est totam voluptas! Tempora, dolorem quis. Assumenda eos facilis, molestiae iste quaerat quod ducimus neque necessitatibus vitae nesciunt fugit corrupti.</p>
             <br><br>
@@ -51,87 +51,86 @@
             <img src="src/img/home.jpg" alt="home">
         </div>
     </section>
-    <div id="calculator" style="height: 70px; width: 100%;"></div>
-    <section class="calculator">
-        <h1>Here is Your <span>CalCredit</span> !</h1>
+    <section id="calculator-section">
+        <div style="height: 70px; width: 100%;"></div>
+        <h1>Here is your <span>CalCredit</span>!</h1>
         <div class="calculator-container">
-            <div class="calculator-header"></div>
-            <div class="calculator-body">
-                <div class="calculator-input-container">
-                    <div class="loan-container">
-                        <label for="loan" id="loan-nominal-title">Loan Nominal</label>
-                        <input type="text" id="loan" placeholder="Rp50.000.000">
-                    </div>
-                    <div class="durationInterest-container">
-                        <div class="duration-container">
-                            <label for="duration" id="duration-title">Duration</label>
-                            <input type="number" id="duration" placeholder="24 months">
+            <div class="input-container">
+                <label for="loan-amount" id="label">Loan Amount</label>
+                <input type="text" id="loan-amount" placeholder="Rp 50.000.000" class="calculator-input">
+                <br><br>
+                <label for="loan-duration" id="label">Loan Duration</label>
+                <input type="number" id="loan-duration" placeholder="24 Months" class="calculator-input">
+                <br><br>
+                <label for="interest-rate" id="label">Interest Rate</label>
+                <input type="number" id="interest-rate" placeholder="12%" class="calculator-input">
+                <br><br><br>
+                <button id="calculator-button">Calculate !</button>
+                <br><br><br><br><br>
+                <h2>How to use <span>CalCredit</span> :</h2>
+                <br>
+                <ol>
+                    <li>Madmidmeimimwmim</li>
+                    <li>deediji</li>
+                    <li>irfjroefeo</li>
+                    <li>rfeifefij</li>
+                    <li>neoeoeoj</li>
+                </ol>
+            </div>
+            <div class="separator-line"></div>
+            <div class="output-container">
+                <div class="method-container">
+                    <h2>Flat Method</h2>
+                    <div class="output">
+                        <div class="amount-container">
+                            <h2>Interest Amount</h2>
+                            <h3 id="flatInterestAmount"></h3>
                         </div>
-                        <div class="interest-container">
-                            <label for="interestRate" id="interest-title">Interest Rate</label>
-                            <input type="number" id="interestRate" min="0" max="100" placeholder="12%">        
+                        <div class="amount-container">
+                            <h2>Debt Amount</h2>
+                            <h3 id="flatDebtAmount"></h3>
                         </div>
-                    </div>
-                    <div class="submit-container">
-                        <button>Calculate !</button>
+                        <div class="details-container">
+                            <h2>Details</h2>
+                            <img src="assets/img/document.png" alt="">
+                        </div>
                     </div>
                 </div>
-                <div class="separator"></div>
-                <div class="output-container">
-                    <div class="methods-container">
-                        <h1>Flat Methods</h1>
-                        <div class="methods-output-container">
-                            <div class="interest-amount-container">
-                                <h2>Interest Amount</h2>
-                                <h3 id="FinterestAmount"></h3>
-                            </div>
-                            <div class="total-amount-container">
-                                <h2>Total Amount</h2>
-                                <h3 id="FtotalAmount"></h3>
-                            </div>
-                            <div class="details-payment-container">
-                                <h2>Details</h2>
-                                <img src="src/img/details.png" alt="details-flat">
-                            </div>
+                <div class="method-container">
+                    <h2>Annuity Method</h2>
+                    <div class="output">
+                        <div class="amount-container">
+                            <h2>Interest Amount</h2>
+                            <h3 id="annuityInterestAmount"></h3>
+                        </div>
+                        <div class="amount-container">
+                            <h2>Debt Amount</h2>
+                            <h3 id="annuityDebtAmount"></h3>
+                        </div>
+                        <div class="details-container">
+                            <h2>Details</h2>
+                            <img src="assets/img/document.png" alt="">
                         </div>
                     </div>
-                    <div class="methods-container">
-                        <h1>Annuity Methods</h1>
-                        <div class="methods-output-container">
-                            <div class="interest-amount-container">
-                                <h2>Interest Amount</h2>
-                                <h3 id="AinterestAmount"></h3>
-                            </div>
-                            <div class="total-amount-container">
-                                <h2>Total Amount</h2>
-                                <h3 id="AtotalAmount"></h3>
-                            </div>
-                            <div class="details-payment-container">
-                                <h2>Details</h2>
-                                <img src="src/img/details.png" alt="details-flat">
-                            </div>
+                </div>
+                <div class="method-container">
+                    <h2>Effective Method</h2>
+                    <div class="output">
+                        <div class="amount-container">
+                            <h2>Interest Amount</h2>
+                            <h3 id="effectiveInterestAmount"></h3>
                         </div>
-                    </div>
-                    <div class="methods-container">
-                        <h1>Effective Methods</h1>
-                        <div class="methods-output-container">
-                            <div class="interest-amount-container">
-                                <h2>Interest Amount</h2>
-                                <h3></h3>
-                            </div>
-                            <div class="total-amount-container">
-                                <h2>Total Amount</h2>
-                                <h3></h3>
-                            </div>
-                            <div class="details-payment-container">
-                                <h2>Details</h2>
-                                <img src="src/img/details.png" alt="details-flat">
-                            </div>
+                        <div class="amount-container">
+                            <h2>Debt Amount</h2>
+                            <h3 id="effectiveDebtAmount"></h3>
+                        </div>
+                        <div class="details-container">
+                            <h2>Details</h2>
+                            <img src="assets/img/document.png" alt="">
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="calculator-footer"></div>
         </div>
     </section>
 

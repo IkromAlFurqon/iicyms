@@ -11,13 +11,11 @@ var typed = new Typed(".typing",{
     loop:true
 })
 
-// Input Indonesian Currency
-let loan = document.getElementById("loan")
+let loanAmount = document.getElementById("loan-amount")
 
-loan.addEventListener('keyup', function(e){
-    loan.value = rupiahCurrency(this.value,'Rp')
+loanAmount.addEventListener('keyup', function(e){
+    loanAmount.value = rupiahCurrency(this.value,'Rp')
 })
-
 function rupiahCurrency(angka, prefix){
     let number_string = angka.replace(/[^,\d]/g,'').toString(),
     split = number_string.split(','),
@@ -33,60 +31,80 @@ function rupiahCurrency(angka, prefix){
     return prefix ==  undefined ? loan : (loan ? 'Rp ' + loan : '') 
 }
 
-// Perhitungan
-// Loan sudah di tangkap
-let duration = document.getElementById('duration')
-let interestRate = document.getElementById('interestRate') 
+let loanDuration = document.getElementById('loan-duration')
+let interestRate = document.getElementById('interest-rate') 
+let calculateButton = document.getElementById('calculator-button')
 
-let calculateButton = document.querySelector('.submit-container button')
+let flatInterestAmount = document.getElementById('flatInterestAmount')
+let annuityInterestAmount = document.getElementById('annuityInterestAmount')
+let effectiveInterestAmount = document.getElementById('effectiveInterestAmount')
 
-let FinterestAmount = document.getElementById('FinterestAmount')
-let AinterestAmount = document.getElementById('AinterestAmount')
+let flatDebtAmount = document.getElementById('flatDebtAmount')
+let annuityDebtAmount = document.getElementById('annuityDebtAmount')
+let effectiveDebtAmount = document.getElementById('effectiveDebtAmount')
 
-let FtotalAmount = document.getElementById('FtotalAmount')
-let AtotalAmount = document.getElementById('AtotalAmount')
+calculateButton.addEventListener("click", function() {
+    flatInterestAmount.innerText = ''
+    annuityInterestAmount.innerText = ''
+    effectiveInterestAmount.innerText = ''
 
-calculateButton.addEventListener("click", function(){
-    // Reset Value
-    FinterestAmount.innerText = ''
-    AinterestAmount.innerText = ''
-    FtotalAmount.innerText = ''
-    AtotalAmount.innerText = ''
+    flatDebtAmount.innerText = ''
+    annuityDebtAmount.innerText = ''
+    effectiveDebtAmount.innerText = ''
 
-    let l = loan.value
+    let l = loanAmount.value
     l = Number(l.replace('Rp','').replaceAll('.',''))
-    let d = Number(duration.value)
+    let d = Number(loanDuration.value)
     let ir = Number(interestRate.value)
 
-    // Perhitungan Flat
-    let FbesarBunga, FtotalBunga, FtotalBalikin
-    FbesarBunga = ((ir/100)/12)*l
-    FtotalBunga = FbesarBunga*d
-    FtotalBalikin = l + FtotalBunga
-    
-    FtotalBunga = new Intl.NumberFormat("id-ID", {style: "currency", currency: "IDR"}).format(Math.round(FtotalBunga))
-    FtotalBalikin = new Intl.NumberFormat("id-ID", {style: "currency", currency: "IDR"}).format(Math.round(FtotalBalikin))
+    // Perhitungan Metode Flat
+    let flatBesarBunga, flatTotalBunga, flatTotalBalikin
+    flatBesarBunga = ((ir/100)/12)*l
+    flatTotalBunga = flatBesarBunga*d
+    flatTotalBalikin = l + flatTotalBunga
 
-    // Perhitungan Anuitas
+    flatTotalBunga = new Intl.NumberFormat("id-ID", {style: "currency", currency: "IDR"}).format(Math.round(flatTotalBunga))
+    flatTotalBalikin = new Intl.NumberFormat("id-ID", {style: "currency", currency: "IDR"}).format(Math.round(flatTotalBalikin))
+
+    // Perhitungan Metode Anuitas
     let total = (l*((ir/100)/12))/(1-(1/(1+((ir/100)/12))**d))
-    let AbesarBunga, Apokok, AtotalBunga = 0, AtotalPokok = 0, AtotalBalikin
+    let anuitasBesarBunga, anuitasPokok, anuitasTotalBunga = 0, anuitasTotalPokok = 0, anuitasTotalBalikin
+    let pinjamanAnuitas = l
     for (let i = 0; i < d; i++) {
-        AbesarBunga = l*((ir/100)/12)
-        Apokok = total - AbesarBunga
-        AtotalBunga = AtotalBunga + AbesarBunga
-        AtotalPokok = AtotalPokok + Apokok
-        l = l - Apokok
+        anuitasBesarBunga = pinjamanAnuitas*((ir/100)/12)
+        anuitasPokok = total - anuitasBesarBunga
+        anuitasTotalBunga = anuitasTotalBunga + anuitasBesarBunga
+        anuitasTotalPokok = anuitasTotalPokok + anuitasPokok
+        pinjamanAnuitas = pinjamanAnuitas - anuitasPokok
     }
-    AtotalBalikin = AtotalBunga + AtotalPokok
-    
-    AtotalBunga = new Intl.NumberFormat("id-ID", {style: "currency", currency: "IDR"}).format(Math.round(AtotalBunga))
-    AtotalBalikin = new Intl.NumberFormat("id-ID", {style: "currency", currency: "IDR"}).format(Math.round(AtotalBalikin))
 
-    //Proses pemunculan ke dalam output
-    FinterestAmount.innerText = FtotalBunga.toString()
-    FtotalAmount.innerText = FtotalBalikin.toString()
+    anuitasTotalBalikin = anuitasTotalBunga + anuitasTotalPokok
 
-    AinterestAmount.innerText = AtotalBunga.toString()
-    AtotalAmount.innerText = AtotalBalikin.toString()
+    anuitasTotalBunga = new Intl.NumberFormat("id-ID", {style: "currency", currency: "IDR"}).format(Math.round(anuitasTotalBunga))
+    anuitasTotalBalikin = new Intl.NumberFormat("id-ID", {style: "currency", currency: "IDR"}).format(Math.round(anuitasTotalBalikin))
 
+    // Perhitungan Metode Efektif
+    let efektifPokok, efektifTotalPokok = 0, efektifBesarBunga, efektifTotalBunga = 0, efektifTotalBalikin
+    efektifPokok = Math.round(l/d)
+    let pinjamanEfektif = l
+    for (let i = 0; i < d; i++) {
+        efektifBesarBunga = pinjamanEfektif*((ir/100)/12)
+        pinjamanEfektif = pinjamanEfektif - efektifPokok
+        efektifTotalBunga = efektifTotalBunga + efektifBesarBunga
+        efektifTotalPokok = efektifTotalPokok + efektifPokok
+    }
+    efektifTotalBalikin = efektifTotalBunga + efektifTotalPokok
+
+    efektifTotalBunga = new Intl.NumberFormat("id-ID", {style: "currency", currency: "IDR"}).format(Math.round(efektifTotalBunga))
+    efektifTotalBalikin = new Intl.NumberFormat("id-ID", {style: "currency", currency: "IDR"}).format(Math.round(efektifTotalBalikin))
+
+    // Proses pemunculan ke dalam output
+    flatInterestAmount.innerText = flatTotalBunga.toString()
+    flatDebtAmount.innerText = flatTotalBalikin.toString()
+
+    annuityInterestAmount.innerText = anuitasTotalBunga.toString()
+    annuityDebtAmount.innerText = anuitasTotalBalikin.toString()
+
+    effectiveInterestAmount.innerText = efektifTotalBunga.toString()
+    effectiveDebtAmount.innerText = efektifTotalBalikin.toString()
 })
